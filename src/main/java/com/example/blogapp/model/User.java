@@ -32,6 +32,9 @@ public class User {
     @ManyToMany(mappedBy = "followers")
     private Set<User> following = new HashSet<>();
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private ProfilePicture profilePicture;
+
     public Set<User> getFollowers() {
         return followers;
     }
@@ -77,5 +80,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ProfilePicture getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(ProfilePicture profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }
